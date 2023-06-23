@@ -36,7 +36,7 @@ func init() {
 
 	prizebondNumbers := []string{"XXXXXXX"} //Place your prizebond number here
 
-	//Initializing Bangladesh band api as prizebond gateway
+	//Initializing Bangladesh api api as prizebond gateway
 	prizebond.Prizebond.Init(prizebondNumbers)
 }
 
