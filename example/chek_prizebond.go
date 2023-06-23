@@ -19,7 +19,7 @@ func init() {
 func main() {
 	var prizeBondData []map[string]string
 
-	//Sendding sms
+	//Fetching prizebond data
 	prizeBondData, err := prizebond.Prizebond.Fetch()
 	if err != nil {
 		//If some error happens during fetching results
