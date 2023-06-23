@@ -10,7 +10,7 @@ func init() {
 	//Setting Prizebond Interface
 	prizebond.Prizebond = &prizebond.PrizebondConnection{}
 
-	prizebondNumbers := []string{"0920249", "0030401"}
+	prizebondNumbers := []string{"XXXXXXX"} //Place your prizebond number here
 
 	//Initializing Bangladesh band api as prizebond gateway
 	prizebond.Prizebond.Init(prizebondNumbers)
@@ -22,8 +22,8 @@ func main() {
 	//Sendding sms
 	prizeBondData, err := prizebond.Prizebond.Fetch()
 	if err != nil {
-		//If something happen before sending sms
-		fmt.Println("Something Went Wrong")
+		//If some error happens during fetching results
+		fmt.Println(err)
 	}
 
 	//API called successfully. Printing API Response in map.

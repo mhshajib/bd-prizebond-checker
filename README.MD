@@ -1,74 +1,58 @@
-![muthofun](muthofun.png)
-
-# GO Package For Muthofun SMS gateway
-
-Send sms with less code with muthofun sms gateway
+# GO Package For Checking Bangladeshi Prizebond Number
 
 
 ### Installation
 
 Install the package using
 ```go
-$ go get github.com/mhshajib/muthofun
+$ go get github.com/mhshajib/bd-prizebond-checker
 ```
 
 ### Usage
 
 To use the package import it in your `*.go` code
 ```go
-import "github.com/mhshajib/muthofun"
+import prizebond "github.com/mhshajib/bd-prizebond-checker"
 ```
 
 ### Example
 
-***Note: Replace `username` and `password` With your Credential***
+***Note: The Example Numbers Are `dummy` Please Use Your Original Prizebond numbers to get proper results***
 
-***You can add multiple mobile numbers as array***
+***You can add multiple bond numbers as array***
 
 ```go
-
 package main
 
 import (
 	"fmt"
 
-	"github.com/mhshajib/muthofun"
+	prizebond "github.com/mhshajib/bd-prizebond-checker"
 )
 
 func init() {
-	//Setting Sms Interface
-	muthofun.Sms = &muthofun.MuthofunConnection{}
+	//Setting Prizebond Interface
+	prizebond.Prizebond = &prizebond.PrizebondConnection{}
 
-	//Initializing Muthofun as sms gateway
-	muthofun.Sms.Init("username", "password")
+	prizebondNumbers := []string{"XXXXXXX"} //Place your prizebond number here
+
+	//Initializing Bangladesh band api as prizebond gateway
+	prizebond.Prizebond.Init(prizebondNumbers)
 }
 
 func main() {
-	//Setting mobile numbers for bulk sms
-	mobiles := []string{
-        "017xxxxxxxx",
-        "018xxxxxxxx",
-        "019xxxxxxxx",
-	}
-
-	//Sms for message body
-	sms := "Thank you for using github.com/mhshajib/muthofun"
-
-	//Flag for unicode
-	unicode := "0"
+	var prizeBondData []map[string]string
 
 	//Sendding sms
-	response, err := muthofun.Sms.Send(mobiles, sms, unicode)
+	prizeBondData, err := prizebond.Prizebond.Fetch()
 	if err != nil {
-		//If something happen before sending sms
-		panic(err)
+		//If some error happens during fetching results
+		fmt.Println(err)
 	}
 
 	//API called successfully. Printing API Response in map.
-	fmt.Println(response)
+	fmt.Println(prizeBondData)
 }
-
-
 
 ```
 
@@ -76,4 +60,4 @@ You'll get response as map
 
 
 ### **License**
-The **muthofun** is an open-source software licensed under the [MIT License](LICENSE)
+The **bd-prizebond-checker** is an open-source software licensed under the [MIT License](LICENSE)
