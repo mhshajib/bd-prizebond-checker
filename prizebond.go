@@ -125,7 +125,7 @@ func parseHtml(baseUrl string, htmlData string) ([]map[string]string, error) {
 	return results, nil
 }
 
-// Send sms
+// Fetch Prizebond Data
 func (p *PrizebondConnection) Fetch() ([]map[string]string, error) {
 	var results []map[string]string
 
