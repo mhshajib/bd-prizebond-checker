@@ -129,7 +129,7 @@ func parseHtml(baseUrl string, htmlData string) ([]map[string]string, error) {
 func (p *PrizebondConnection) Fetch() ([]map[string]string, error) {
 	var results []map[string]string
 
-	//Checking is there any mobile number
+	//Checking is there any prizebond number
 	err := bondNumberValidation(p.BondNumbers)
 	if err != nil {
 		return results, err
